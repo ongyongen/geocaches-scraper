@@ -50,4 +50,3 @@ def test_clean_data():
 
     for col in cleaned_cols:
         assert col in scraper.gc_df.columns
-
