@@ -2,7 +2,7 @@
 ddd
 """
 
-from scraper_function.scraper import GeocacheScraper
+from scraper import GeocacheScraper
 
 def test_extract_data():
     """
