@@ -1,0 +1,11 @@
+.env
+.venv
+.pytest_cache
+**/.DS_Store
+
+./scraper_function/config.py
+
+terraform/.terraform
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
