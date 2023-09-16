@@ -1,5 +1,6 @@
 """
-DDDD
+This file contains the config values for the 
+geocaches scraper function
 """
 table_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0)' +

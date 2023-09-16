@@ -1,5 +1,6 @@
 """
-ddd
+This file contains the lambda function to trigger
+the scraping of the geocaches
 """
 import os
 import json
@@ -15,7 +16,8 @@ MONGODB_URI = os.getenv("MONGODB_URI")
 
 def lambda_handler(event, context):
     """
-    dddd
+    This function runs the geocaches scraper
+    and outputs the result into a mongodb collection
     """
 
     # Start the scraper
@@ -27,8 +29,8 @@ def lambda_handler(event, context):
     client = MongoClient(MONGODB_URI, tlsCAFile=certifi.where())
 
     # Seed the DB with the newly scraped caches
-    doc = client.geocaches
-    geocaches_collection = doc[DB_NAME]
+    collection = client.geocaches
+    geocaches_collection = collection[DB_NAME]
     geocaches_collection.drop()
 
     geocaches_collection.insert_many(scraper.json)

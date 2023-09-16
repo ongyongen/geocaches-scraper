@@ -1,5 +1,5 @@
 """
-www
+This file contains the geocaches scraper class
 """
 from json import loads
 import requests
@@ -10,7 +10,8 @@ from config import table_headers, table_params, table_cookies
 
 class GeocacheScraper:
     """
-    ddd
+    This class encapsulates methods to scrape the
+    geocaches from the geocaching website
     """
 
     def __init__(self):
@@ -66,10 +67,7 @@ class GeocacheScraper:
 
     def __extract_geocaches_data(self):
         """
-        GET restaurant data from the url link provided
-
-        Input : None
-        Output : Object
+        GET geocaches data from the url link provided
         """
 
         try:
@@ -94,10 +92,10 @@ class GeocacheScraper:
             print("Error: request to API timed out")
             return None
 
-    # Method to scrape for all cache data from the results table
     def scrape_table_data(self):
         """
-        ddd
+        Scrape geocaches data and output them into a 
+        pandas dataframe
         """
         res = self.__extract_geocaches_data()
         # Obtain all relevant data for non-premium caches and copy it over to the dataframe
@@ -137,7 +135,7 @@ class GeocacheScraper:
 
     def __extract_integer_values_from_cell(self):
         """
-        ddd
+        Helper function to obtain geocaches and container type
         """
         self.gc_df['geocache_type'] = list(
             map(lambda x: x[0], list(self.gc_df['geocache_type'])))
@@ -146,7 +144,7 @@ class GeocacheScraper:
 
     def __format_url_links(self):
         """
-        ddd
+        Helper function to format URL link to geocaches page
         """
         # Format URL link to individual caches
         self.gc_df['details_url'] = list(map(
@@ -154,7 +152,9 @@ class GeocacheScraper:
     ))
 
     def __format_datetime(self):
-        # Format datetime into separate cols (either date or time)
+        """
+        Helper function to format datetime string
+        """
         self.gc_df['placed_date'] = list(map(lambda x: str(x).split(
             "T", maxsplit=1)[0] if len(str(x)) > 0 else x, list(self.gc_df['placed_date'])))
         found_date = [str(x).split("T", maxsplit=1)[0] if len(str(x)) >
@@ -163,7 +163,8 @@ class GeocacheScraper:
 
     def clean_table_data(self):
         """
-        ddd
+        Cleans and processes geocaches data into a suitable format
+        for export
         """
         self.__extract_integer_values_from_cell()
         self.__format_url_links()

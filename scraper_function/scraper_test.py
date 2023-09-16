@@ -1,13 +1,14 @@
 """
-ddd
+This file contains all the tests for
+the geocaches scraper function
 """
 
 from scraper import GeocacheScraper
 
 def test_extract_data():
     """
-    Test that restaurant data (from a list) is collected
-    into a dataframe for subsequent data processing steps
+    Test that geocaches data is scraped and 
+    output to a dataframe
     """
     scraper = GeocacheScraper()
     scraper.scrape_table_data()
@@ -26,7 +27,8 @@ def test_extract_data():
 
 def test_clean_data():
     """
-    ddd
+    Tests that geocaches data scraped from the dataframe
+    is cleaned and processed accordingly
     """
 
     scraper = GeocacheScraper()
